@@ -1,6 +1,6 @@
 #encoding:utf-8
 
-class ReDBis
-  VERSION = '0.0.0'
+module ReDBis
+  VERSION = '0.0.1'
 end
 

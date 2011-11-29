@@ -1,7 +1,14 @@
+#encoding:utf-8
 require 'redbis/version'
-require 'redis'
+require 'redbis/client'
 
-class ReDBis < Redis
-  # Your code goes here...
+module ReDBis
+
+	class << self
+		def new o={}
+			ReDBis::Client.new o
+		end
+	end
+
 end
 
