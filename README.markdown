@@ -73,6 +73,7 @@ is not registered. Returns `true`/`false` as the database was/was not deleted.
 
 ## Changelog
 
++ __0.0.2__: options passed to initialization method are not replaced
 + __0.0.1__: first revision
 
 ## License

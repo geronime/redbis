@@ -11,7 +11,7 @@ module ReDBis
 		#   db     - database name (optional, default database #0 used by default)
 		#   create - whether to record a new database name if unknown yet (false)
 		def initialize o={}
-			self.class.hash_keys_to_sym o
+			o = self.class.hash_keys_to_sym o
 			dbname = o.delete :db
 			create = o.delete :create
 			@dbid, @dbname = 0, nil
@@ -103,7 +103,9 @@ module ReDBis
 		TRANSACTION_ATTEMPTS = 3
 
 		def self.hash_keys_to_sym h
-			h.each_pair{|k, v| h[k.to_sym] = h.delete k if k.kind_of? String }
+			hash = {}
+			h.each_pair{|k, v| hash[k.to_sym] = h[k] }
+			hash
 		end
 
 	end # Client
