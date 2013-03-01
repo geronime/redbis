@@ -1,4 +1,9 @@
 #encoding:utf-8
+begin
+	require 'redis/connection/hiredis'
+rescue LoadError => e
+	$-v and warn "HiRedis not available, using pure ruby connector."
+end
 require 'redis'
 
 module ReDBis

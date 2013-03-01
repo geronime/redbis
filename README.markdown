@@ -5,7 +5,7 @@
 ReDBis is simple redis wrapper to select database by name. ReDBis inherits
 from Redis and provides some extra methods.
 
-## DB naming:
+## DB naming
 
 Naming is done by storing `{:name => :id}` into '`ReDBis::databases`' hash
 in database #0.
@@ -14,7 +14,24 @@ in database #0.
 
     require 'redbis'
 
-### Constructor:
+### HiRedis
+
+If you want to use [hiredis] (https://github.com/pietern/hiredis-rb)
+it is necessary to install it:
+
+    $ gem install hiredis
+
+or include it in your `Gemfile`:
+
+    gem 'hiredis', '~> 0.4.0'
+
+It will be used automatically (with fallback to plain `redis` in case of
+`LoadError`).
+
+It is not included as dependency in gemspec because it does not build
+on all systems yet (i.e. FreeBSD).
+
+### Constructor
 
     r = ReDBis.new(o={})
 
@@ -29,7 +46,7 @@ on top:
 __It is recommended not to use the database with id #0 as the information about
 the database names is stored there and `flushdb` would drop it.__
 
-### Methods on top of Redis:
+### Methods on top of Redis
 
 #### db_current
 
@@ -73,6 +90,7 @@ is not registered. Returns `true`/`false` as the database was/was not deleted.
 
 ## Changelog
 
++ __0.0.3__: using optional hiredis instead of pure ruby connector
 + __0.0.2__: options passed to initialization method are not replaced
 + __0.0.1__: first revision
 
